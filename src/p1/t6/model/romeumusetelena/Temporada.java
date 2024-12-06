@@ -23,6 +23,11 @@ public class Temporada {
         this.any = any;
     }
 
+    @Override
+    public String toString() {
+        return "Temporada{" + "any=" + any + '}';
+    }
+
     
 }
 

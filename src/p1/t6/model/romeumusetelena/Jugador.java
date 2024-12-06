@@ -1,9 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package p1.t6.model.romeumusetelena;
 
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -98,8 +95,7 @@ public final class Jugador {
     public int getAnyFiRevisioMedica() {
         return anyFiRevisioMedica;
     }
-    
-    ///posar que no pugui ser un any inferior a l'any actual
+
     public void setAnyFiRevisioMedica(int anyFiRevisioMedica) throws GestorBDEsportsException {
         if(anyFiRevisioMedica < 0){
             throw new GestorBDEsportsException("El any fi revisió mèdica no pot ser negatiu");
@@ -146,9 +142,34 @@ public final class Jugador {
             throw new GestorBDEsportsException("Sexe no valid");
         }
         this.sexe = sexe;
-       
     }
 
-    
-}
+    public String getCategoria() {
+        int edat = calcularEdat();
+        if (edat >= 7 && edat <= 8) {
+            return "Benjamí";
+        } else if (edat >= 9 && edat <= 11) {
+            return "Aleví";
+        } else if (edat >= 12 && edat <= 13) {
+            return "Infantil";
+        } else if (edat >= 14 && edat <= 15) {
+            return "Cadet";
+        } else if (edat >= 16 && edat <= 17) {
+            return "Juvenil";
+        } else {
+            return "Senior";
+        }
+    }
 
+    private int calcularEdat() {
+        Calendar avui = Calendar.getInstance();
+        Calendar dataNaixement = Calendar.getInstance();
+        dataNaixement.setTime(dataNaix);
+
+        int edat = avui.get(Calendar.YEAR) - dataNaixement.get(Calendar.YEAR);
+        if (avui.get(Calendar.DAY_OF_YEAR) < dataNaixement.get(Calendar.DAY_OF_YEAR)) {
+            edat--;
+        }
+        return edat;
+    }
+}

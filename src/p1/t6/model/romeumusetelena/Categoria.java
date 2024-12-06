@@ -36,6 +36,11 @@ public class Categoria {
     public int getEdatMax() {
         return edatMax;
     }
+
+    @Override
+    public String toString() {
+        return "Categoria{" + "id=" + id + ", nom=" + nom + ", edatMin=" + edatMin + ", edatMax=" + edatMax + '}';
+    }
     
 }
 
