@@ -51,6 +51,11 @@ public final class Adreca {
         }
         this.poblacio = poblacio;
     }
+
+    @Override
+    public String toString() {
+        return "Adreca{" + "direccio=" + direccio + ", codiPostal=" + codiPostal + ", poblacio=" + poblacio + '}';
+    }
     
     
 }

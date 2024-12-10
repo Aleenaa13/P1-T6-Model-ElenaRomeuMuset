@@ -172,4 +172,11 @@ public final class Jugador {
         }
         return edat;
     }
+
+    @Override
+    public String toString() {
+        return "Jugador{" + "id=" + id + ", nom=" + nom + ", cognoms=" + cognoms + ", adreca=" + adreca + ", foto=" + foto + ", anyFiRevisioMedica=" + anyFiRevisioMedica + ", IBAN=" + IBAN + ", idLegal=" + idLegal + ", dataNaix=" + dataNaix + ", sexe=" + sexe + '}';
+    }
+    
+    
 }
