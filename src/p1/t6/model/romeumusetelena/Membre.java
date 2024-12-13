@@ -2,10 +2,10 @@ package p1.t6.model.romeumusetelena;
 
 public final class Membre {
     private int equip; // id equip
-    private int jugador; // id jugador
+    private Jugador jugador; // id jugador
     private TipusMembre tipus; // Titular o Convidat
 
-    public Membre(int equip, int jugador, TipusMembre tipus) {
+    public Membre(int equip, Jugador jugador, TipusMembre tipus) {
         setEquip(equip);
         setJugador(jugador);
         setTipus(tipus);
@@ -22,14 +22,11 @@ public final class Membre {
         this.equip = equip;
     }
 
-    public int getJugador() {
+    public Jugador getJugador() {
         return jugador;
     }
 
-    public void setJugador(int jugador) {
-        if (jugador <= 0) {
-            throw new IllegalArgumentException("L'identificador del jugador ha de ser un valor positiu.");
-        }
+    public void setJugador(Jugador jugador) {
         this.jugador = jugador;
     }
 

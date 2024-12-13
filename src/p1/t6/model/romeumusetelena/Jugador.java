@@ -2,11 +2,8 @@ package p1.t6.model.romeumusetelena;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.regex.Pattern;
 
-/**
- *
- * @author Usuari
- */
 public final class Jugador {
     private int id;
     private String nom;
@@ -43,7 +40,7 @@ public final class Jugador {
         setDataNaix(dataNaix);
         setSexe(sexe);
     }
-    
+
     public int getId() {
         return id;
     }
@@ -80,7 +77,7 @@ public final class Jugador {
         }
         this.adreca = adreca;
     }
-    
+
     public String getFoto() {
         return foto;
     }
@@ -107,9 +104,9 @@ public final class Jugador {
         return IBAN;
     }
 
-    public void setIBAN(String IBAN) {
-        if (IBAN == null) {
-            throw new IllegalArgumentException("El camp 'IBAN' no pot ser null");
+    public void setIBAN(String IBAN) throws GestorBDEsportsException {
+        if (IBAN == null || !IBANEsValid(IBAN)) {
+            throw new GestorBDEsportsException("El camp 'IBAN' no és vàlid");
         }
         this.IBAN = IBAN;
     }
@@ -118,9 +115,9 @@ public final class Jugador {
         return idLegal;
     }
 
-    public void setIdLegal(String idLegal) {
-        if (idLegal == null) {
-            throw new IllegalArgumentException("El camp 'idLegal' no pot ser null");
+    public void setIdLegal(String idLegal) throws GestorBDEsportsException {
+        if (idLegal == null || !IdLegalEsValid(idLegal)) {
+            throw new GestorBDEsportsException("El camp 'idLegal' no és vàlid");
         }
         this.idLegal = idLegal;
     }
@@ -177,6 +174,15 @@ public final class Jugador {
     public String toString() {
         return "Jugador{" + "id=" + id + ", nom=" + nom + ", cognoms=" + cognoms + ", adreca=" + adreca + ", foto=" + foto + ", anyFiRevisioMedica=" + anyFiRevisioMedica + ", IBAN=" + IBAN + ", idLegal=" + idLegal + ", dataNaix=" + dataNaix + ", sexe=" + sexe + '}';
     }
-    
-    
+
+    // Métode per validar l'IBAN
+    private boolean IBANEsValid(String IBAN) {
+        return IBAN.matches("[A-Z]{2}[0-9]{22}");
+    }
+
+    // Métode per validar l'ID Legal
+    private boolean IdLegalEsValid(String idLegal) {
+        return idLegal.matches("[A-Z0-9]+");
+    }
 }
+
